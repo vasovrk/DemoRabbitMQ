@@ -1,0 +1,3 @@
+file:
+  producerUri: "file://tmp/b"
+  consumerUri: "file://tmp/a"
