@@ -13,4 +13,8 @@ public class EndpointProperties {
     private String producerUri;
 
     private String consumerUri;
+
+    private String testCamelUri;
+
+    private String rabbitUri;
 }

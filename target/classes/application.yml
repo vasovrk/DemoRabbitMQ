@@ -1,3 +1,15 @@
 file:
-  producerUri: "file://tmp/b"
-  consumerUri: "file://tmp/a"
+  producerUri: "file://tmp/a"
+  consumerUri: "file://tmp/b"
+  testCamelUri: "seda:queue:test.queue"
+  rabbitUri: "rabbitmq://localhost/my_excange?queue=vasovrk&exchangeType=fanout"
+camel:
+  rabbitmq:
+    connection:
+      host: localhost
+      port: 5672
+      username: guest
+      password: guest
+      vhost: "/"
+      automaticRecoveryEnabled: true
+

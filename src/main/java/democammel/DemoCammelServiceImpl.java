@@ -10,14 +10,22 @@ public class DemoCammelServiceImpl implements DemoCammelService {
 
     private final EndpointProperties endpointProperties;
 
+
     private final ProducerTemplate fileNotifierTemplate;
+
 
     public DemoCammelServiceImpl(EndpointProperties endpointProperties, ProducerTemplate fileNotifierTemplate) {
         this.endpointProperties = endpointProperties;
         this.fileNotifierTemplate = fileNotifierTemplate;
+        tryToSendToRabbit("kouraditses");
     }
 
     public void processFile(final InputStream file) {
-        fileNotifierTemplate.asyncSend(endpointProperties.getConsumerUri(), ex -> ex.getIn().setBody(file));
+        fileNotifierTemplate.asyncSend(endpointProperties.getConsumerUri(),
+                ex -> ex.getIn().setBody(file));
+    }
+
+    public void tryToSendToRabbit(final String something) {
+        fileNotifierTemplate.sendBody(endpointProperties.getTestCamelUri(), something);
     }
 }
